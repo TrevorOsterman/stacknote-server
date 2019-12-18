@@ -3,9 +3,10 @@ const knex = require("knex");
 const cors = require("cors");
 const app = require("./app");
 app.use(cors());
+
 const db = knex({
   client: "pg",
-  connection: DATABASE_URL
+  connection: "postgresql://TrevorOsterman@localhost/StackNote"
 });
 
 app.set("db", db);

@@ -6,6 +6,7 @@ const helmet = require("helmet");
 const { NODE_ENV } = require("./config");
 const { CLIENT_ORIGIN } = require("./config");
 const notesRouter = require("./notes/notes-router.js");
+const subsRouter = require("./subcategories/subs-router.js");
 
 const app = express();
 app.use(cors());
@@ -15,6 +16,7 @@ app.use(morgan(morganOption));
 app.use(helmet());
 
 app.use(notesRouter);
+app.use(subsRouter);
 
 app.use(function errorHandler(error, req, res, next) {
   let response;

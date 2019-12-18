@@ -1,41 +1,39 @@
 const knex = require("knex");
 const notesService = {
-  getAllEvents(knex) {
+  getAllNotes(knex) {
     return knex
-      .select("*")
-      .from("events")
-      .where("event_date", ">=", new Date())
-      .orderBy("event_date", "asc");
+      .select(
+        "notes.id",
+        "content",
+        "subcategory_name",
+        "subcategory_id",
+        "category_name",
+        "category_id"
+      )
+      .from("notes")
+      .innerJoin("subcategories", "notes.subcategory_id", "subcategories.id")
+      .innerJoin("categories", "subcategories.category_id", "categories.id");
   },
 
-  createEvent(knex, newEvent) {
+  createNote(knex, newNote) {
     return knex
-      .insert(newEvent)
-      .into("events")
+      .insert(newNote)
+      .into("notes")
       .returning("*")
       .then(rows => {
         return rows[0];
       });
   },
 
-  getById(knex, id) {
-    return knex
-      .select("*")
-      .from("events")
-      .where("eventid", id)
-      .first();
+  updateNote(knex, id, newText) {
+    return knex("notes")
+      .where({ id })
+      .update(newText);
   },
 
-  updateEvent(knex, id, updatedEvent) {
-    return knex("events")
-      .where({ eventid: id })
-      .update(updatedEvent);
-  },
-
-  deleteEvent(knex, id) {
-    return knex
-      .from("events")
-      .where({ eventid: id })
+  deleteNote(knex, id) {
+    return knex("notes")
+      .where({ id })
       .delete();
   }
 };
