@@ -10,6 +10,10 @@ const subsService = {
       });
   },
 
+  getAllSubs(knex) {
+    return knex.select("*").from("subcategories");
+  },
+
   updateSub(knex, id, updatedSub) {
     return knex("subcategories")
       .where({ id })
