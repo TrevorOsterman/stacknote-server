@@ -12,7 +12,8 @@ const notesService = {
       )
       .from("notes")
       .innerJoin("subcategories", "notes.subcategory_id", "subcategories.id")
-      .innerJoin("categories", "subcategories.category_id", "categories.id");
+      .innerJoin("categories", "subcategories.category_id", "categories.id")
+      .orderBy("subcategory_id", "asc");
   },
 
   createNote(knex, newNote) {
@@ -28,7 +29,8 @@ const notesService = {
   updateNote(knex, id, newText) {
     return knex("notes")
       .where({ id })
-      .update(newText);
+      .update(newText)
+      .orderBy("subcategory_id", "asc");
   },
 
   deleteNote(knex, id) {

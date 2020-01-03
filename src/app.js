@@ -10,7 +10,7 @@ const subsRouter = require("./subcategories/subs-router.js");
 
 const app = express();
 app.use(cors());
-const morganOption = NODE_ENV === "production" ? "tiny" : "common";
+const morganOption = process.env.NODE_ENV === "production" ? "tiny" : "common";
 
 app.use(morgan(morganOption));
 app.use(helmet());
