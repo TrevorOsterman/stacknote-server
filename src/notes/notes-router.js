@@ -25,7 +25,10 @@ notesRouter
     notesService
       .createNote(req.app.get("db"), newNote)
       .then(note => {
-        res.status(201).json(note);
+        res
+          .status(201)
+          .json(note)
+          .done();
       })
       .catch(next);
   });
