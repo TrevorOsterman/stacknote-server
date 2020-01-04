@@ -1,4 +1,6 @@
-const { PORT, DB_URL } = require("./config");
+require("dotenv").config();
+const { PORT, DATABASE_URL } = require("./config");
+
 const knex = require("knex");
 const cors = require("cors");
 const app = require("./app");
@@ -6,8 +8,10 @@ app.use(cors());
 
 const db = knex({
   client: "pg",
-  connection: DB_URL
+  connection: DATABASE_URL
 });
+
+console.log(DATABASE_URL);
 
 app.set("db", db);
 
