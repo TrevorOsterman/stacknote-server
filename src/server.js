@@ -1,4 +1,4 @@
-const { PORT, DATABASE_URL } = require("./config");
+const { PORT, DB_URL } = require("./config");
 const knex = require("knex");
 const cors = require("cors");
 const app = require("./app");
@@ -6,7 +6,7 @@ app.use(cors());
 
 const db = knex({
   client: "pg",
-  connection: "postgresql://TrevorOsterman@localhost/StackNote"
+  connection: DB_URL
 });
 
 app.set("db", db);
