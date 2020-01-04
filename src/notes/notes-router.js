@@ -20,8 +20,8 @@ notesRouter
   })
   .post(bodyParser, (req, res, next) => {
     const { content, subcategory_id } = req.body;
-    // const id = uuid();
-    const newNote = { content, subcategory_id };
+    const id = uuid();
+    const newNote = { id, content, subcategory_id };
 
     notesService
       .createNote(req.app.get("db"), newNote)

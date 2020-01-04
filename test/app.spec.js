@@ -6,7 +6,7 @@ describe("App", () => {
   before("make knex instance", () => {
     const db = knex({
       client: "pg",
-      connection: "postgresql://TrevorOsterman@localhost/StackNote"
+      connection: "postgresql://TrevorOsterman@localhost/StackNote-Test"
     });
     app.set("db", db);
   });
