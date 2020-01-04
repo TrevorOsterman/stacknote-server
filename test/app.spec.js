@@ -31,7 +31,7 @@ describe("App", () => {
 
   it("POST /api/notes/ responds with 201 and creates an object", () => {
     const newNote = {
-      subcategory_id: 1,
+      subcategory_id: "ff337cb2-1ec3-43fd-9dd3-f9501073553b",
       content: "test"
     };
     return supertest(app)
