@@ -20,15 +20,13 @@ notesRouter
   })
   .post(bodyParser, (req, res, next) => {
     const { content, subcategory_id } = req.body;
+    // const id = uuid();
     const newNote = { content, subcategory_id };
 
     notesService
       .createNote(req.app.get("db"), newNote)
       .then(note => {
-        res
-          .status(201)
-          .json(note)
-          .done();
+        res.status(201).json(note);
       })
       .catch(next);
   });

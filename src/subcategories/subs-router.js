@@ -19,6 +19,7 @@ subsRouter
   })
   .post(bodyParser, (req, res, next) => {
     const { subcategory_name, category_id } = req.body;
+    // const id = uuid();
     const newSub = { subcategory_name, category_id };
 
     subsService

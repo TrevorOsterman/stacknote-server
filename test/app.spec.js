@@ -6,7 +6,7 @@ describe("App", () => {
   before("make knex instance", () => {
     const db = knex({
       client: "pg",
-      connection: "postgresql://TrevorOsterman@localhost/StackNote-Test"
+      connection: "postgresql://TrevorOsterman@localhost/StackNote"
     });
     app.set("db", db);
   });
@@ -37,7 +37,7 @@ describe("App", () => {
     return supertest(app)
       .post("/api/notes")
       .send(newNote)
-      .expect(500);
+      .expect(201);
   });
 
   it("POST /api/subcategories/ responds with 201 and creates an object", () => {
@@ -48,6 +48,6 @@ describe("App", () => {
     return supertest(app)
       .post("/api/subcategories")
       .send(newSub)
-      .expect(500);
+      .expect(201);
   });
 });
