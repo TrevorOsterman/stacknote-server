@@ -14,7 +14,7 @@ const notesService = {
       .from("notes")
       .innerJoin("subcategories", "notes.subcategory_id", "subcategories.id")
       .innerJoin("categories", "subcategories.category_id", "categories.id")
-      .orderBy("subcategory_id", "asc");
+      .orderBy("note_created", "asc");
   },
 
   createNote(knex, newNote) {

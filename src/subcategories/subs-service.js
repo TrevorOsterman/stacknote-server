@@ -11,7 +11,10 @@ const subsService = {
   },
 
   getAllSubs(knex) {
-    return knex.select("*").from("subcategories");
+    return knex
+      .select("*")
+      .from("subcategories")
+      .orderBy("sub_created", "asc");
   },
 
   updateSub(knex, id, updatedSub) {
