@@ -8,7 +8,8 @@ const notesService = {
         "subcategory_name",
         "subcategory_id",
         "category_name",
-        "category_id"
+        "category_id",
+        "note_created"
       )
       .from("notes")
       .innerJoin("subcategories", "notes.subcategory_id", "subcategories.id")
