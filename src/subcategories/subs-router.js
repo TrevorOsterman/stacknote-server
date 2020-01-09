@@ -39,7 +39,7 @@ subsRouter
     subsService
       .updateSub(req.app.get("db"), req.params.sub_id, updatedSub)
       .then(numRowsAffected => {
-        res.status(204).end();
+        res.status(202).end();
       })
       .catch(next);
   })
