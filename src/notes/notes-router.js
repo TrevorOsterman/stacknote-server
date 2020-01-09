@@ -23,8 +23,6 @@ notesRouter
     const id = uuid();
     const newNote = { id, content, subcategory_id };
 
-    console.log(newNote);
-
     notesService
       .createNote(req.app.get("db"), newNote)
       .then(note => {

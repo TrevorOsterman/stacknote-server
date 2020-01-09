@@ -25,7 +25,6 @@ const subsService = {
 
   deleteSub(knex, id) {
     const subNotes = knex("notes");
-    console.log(subNotes);
     return knex("subcategories")
       .where({ id })
       .delete();
