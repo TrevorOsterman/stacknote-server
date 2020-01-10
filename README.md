@@ -1,5 +1,7 @@
 # StackNote
 
+App: https://stacknote.now.sh/
+
 ## Summary
 
 StackNote is a standard note-taking app for students beginning to
