@@ -1,26 +1,58 @@
-# Express Boilerplate!
+# StackNote
 
-This is a boilerplate project used for starting new projects!
+## Summary
 
-## Set up
+StackNote is a standard note-taking app for students beginning to
+learn the fundementals of full stack web development
 
-Complete the following steps to start a new project (NEW-PROJECT-NAME):
+The notes sections are broken down by by Front-End, Back-End, Database, and Misc. for any notes that
+do not fall strictly under one category.
 
-1. Clone this repository to your local machine `git clone BOILERPLATE-URL NEW-PROJECTS-NAME`
-2. `cd` into the cloned repository
-3. Make a fresh start of the git history for this project with `rm -rf .git && git init`
-4. Install the node dependencies `npm install`
-5. Move the example Environment file to `.env` that will be ignored by git and read by the express server `mv example.env .env`
-6. Edit the contents of the `package.json` to use NEW-PROJECT-NAME instead of `"name": "express-boilerplate",`
+This application is an ongoing project by Trevor Osterman, and as
+such, will receive the implementation of new features over time
 
-## Scripts
+Please feel free to get started taking notes, and happy hacking!
 
-Start the application `npm start`
+## API
 
-Start nodemon for the application `npm run dev`
+Base API URL: https://sleepy-dawn-40690.herokuapp.com/
 
-Run the tests `npm test`
+StackNote's API uses the base API and a few endpoints to operate.
 
-## Deploying
+### /notes
 
-When your new project is ready for deployment, add a new Heroku application with `heroku create`. This will make a new git remote called "heroku" and you can then `npm run deploy` which will push to this remote's master branch.
+#### Methods:
+
+GET: these requests will return a list of notes in the database sorted by date ascending.
+
+POST: requests will need to include a json-formatted body which includes the required keys and values to create a new note:
+
+-content
+-subcategory_id
+
+### notes/note_id
+
+#### Methods:
+
+DELETE: this request, when sent with a particular note's ID, deletes the particular note from the database.
+
+### /subcategories
+
+#### Methods:
+
+GET: these requests will return a list of note subcategories in the database sorted by date ascending.
+
+POST: these requests will create new subcategories in which to place notes when provided with the following json-formatted keys and values:
+
+-subcategory_name
+-category_id
+
+### /subcategories/:sub_id
+
+PATCH: requests to this endpoint, when accompanied by a subcategory id in the parameters, will make edits to the name of any subcategory when provided with a new json-formatted value for the "subcategory_name" key.
+
+DELETE: his request, when sent with a particular note's ID, deletes the particular note from the database.
+
+## Technologies:
+
+The StackNote client was created using React, with the server constructed using Node.js and Express. StackNotes's database was created using Postgres.
